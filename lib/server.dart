@@ -45,8 +45,12 @@ removeClient(myClient client) {
 
 List<myClient> clients = new List();
 
- void main() { 
-      HttpServer.bind(InternetAddress.anyIPv4, 8080).then((HttpServer server) {
+//  void main() { 
+//   startServer();
+//  }
+
+ void startServer() {
+  HttpServer.bind(InternetAddress.anyIPv4, 8080).then((HttpServer server) {
         print("HttpServer listening...");
         server.listen((HttpRequest request) {
           if (WebSocketTransformer.isUpgradeRequest(request)){
@@ -73,10 +77,10 @@ void serveRequest(HttpRequest request){
 }
 
 void distributeMessage(String msg, WebSocket socket){
-  print('Message --> ' + msg);
+  // print('Message --> ' + msg);
   for(int i = 0; i < clients.length; i ++) {
     if(clients[i]._socket != socket)  {
-      clients[i].write('$msg ');
+      clients[i].write('$msg');
     }
   }
   //  for (myClient c in clients)c.write('$msg ');
