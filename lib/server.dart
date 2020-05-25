@@ -50,7 +50,7 @@ List<myClient> clients = new List();
 //  }
 
  void startServer() {
-  HttpServer.bind("127.0.0.1", 8080).then((HttpServer server) {
+  HttpServer.bind("0.0.0.0", 8080).then((HttpServer server) {
         print("HttpServer listening...");
         server.listen((HttpRequest request) {
           if (WebSocketTransformer.isUpgradeRequest(request)){
