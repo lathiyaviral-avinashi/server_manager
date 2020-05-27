@@ -80,6 +80,7 @@ void distributeMessage(String msg, WebSocket socket){
   // print('Message --> ' + msg);
   for(int i = 0; i < clients.length; i ++) {
     if(clients[i]._socket != socket)  {
+      print("Client length --> " clients.length.toString());
       clients[i].write('$msg');
     }
   }
